@@ -27,8 +27,9 @@ namespace AppliedSysMotors
             {
                 Global.position = ddlDrivers.SelectedIndex;
                 AddClaims addClaim = new AddClaims();
-                addClaim.Show();
                 this.Close();
+                addClaim.Show();
+                
             }
             
         }
@@ -43,11 +44,11 @@ namespace AppliedSysMotors
              * it populates its respected label using accessors
              */
             
-            for (int index=0; index<Global.newPolicy.getDriverArray().Length; index++)
+            for (int index=0; index<Global.newPolicy.DriverArray.Length; index++)
             {
                 if (Global.newPolicy.getDriverAt(index) != null)
                 {
-                    if (Global.newPolicy.getDriverAt(index).getOcc() == true)
+                    if (Global.newPolicy.getDriverAt(index).Occ== true)
                     {
                         occ = "Accountant";
                     }
@@ -60,41 +61,40 @@ namespace AppliedSysMotors
                     {
                         case 0:
                             lblDriver1Details.Text = Global.newPolicy.getDriverName(0);
-                            lblClaim1.Text = Global.newPolicy.getDriverAt(0).getNumOfClaims().ToString();
-                            lblAge1.Text= Global.newPolicy.getDriverAt(0).getAge().ToString();
+                            lblClaim1.Text = Global.newPolicy.getDriverAt(0).NumOfClaims.ToString();
+                            lblAge1.Text= Global.newPolicy.getDriverAt(0).Age.ToString();
                             lblOcc1.Text = occ;
                             break;
                         case 1:
                             lblDriver2Details.Text = Global.newPolicy.getDriverName(1);
-                            lblClaim2.Text = Global.newPolicy.getDriverAt(1).getNumOfClaims().ToString();
-                            lblAge2.Text = Global.newPolicy.getDriverAt(1).getAge().ToString();
+                            lblClaim2.Text = Global.newPolicy.getDriverAt(1).NumOfClaims.ToString();
+                            lblAge2.Text = Global.newPolicy.getDriverAt(1).Age.ToString();
                             lblOcc2.Text = occ;
                             break;
                         case 2:
                             lblDriver3Details.Text = Global.newPolicy.getDriverName(2);
-                            lblClaim3.Text = Global.newPolicy.getDriverAt(2).getNumOfClaims().ToString();
-                            lblAge3.Text = Global.newPolicy.getDriverAt(2).getAge().ToString();
+                            lblClaim3.Text = Global.newPolicy.getDriverAt(2).NumOfClaims.ToString();
+                            lblAge3.Text = Global.newPolicy.getDriverAt(2).Age.ToString();
                             lblOcc3.Text = occ;
                             break;
                         case 3:
                             lblDriver4Details.Text = Global.newPolicy.getDriverName(3);
-                            lblClaim4.Text = Global.newPolicy.getDriverAt(3).getNumOfClaims().ToString();
-                            lblAge4.Text = Global.newPolicy.getDriverAt(3).getAge().ToString();
+                            lblClaim4.Text = Global.newPolicy.getDriverAt(3).NumOfClaims.ToString();
+                            lblAge4.Text = Global.newPolicy.getDriverAt(3).Age.ToString();
                             lblOcc4.Text = occ;
                             break;
                         case 4:
                             lblDriver5Details.Text = Global.newPolicy.getDriverName(4);
-                            lblClaim5.Text = Global.newPolicy.getDriverAt(4).getNumOfClaims().ToString();
-                            lblAge5.Text = Global.newPolicy.getDriverAt(4).getAge().ToString();
+                            lblClaim5.Text = Global.newPolicy.getDriverAt(4).NumOfClaims.ToString();
+                            lblAge5.Text = Global.newPolicy.getDriverAt(4).Age.ToString();
                             lblOcc5.Text = occ;
                             break;
                     }
-                        
-
 
                  }
                 
             }
+
         }
 
         private void btnViewClaims_Click(object sender, EventArgs e)
@@ -105,16 +105,20 @@ namespace AppliedSysMotors
             {
                 MessageBox.Show("Please Select a owner of claims you wish view");
             }
+            else if(Global.newPolicy.getDriverAt(Global.position) == null)
+            {
+                MessageBox.Show("Please enter at least one driver");
+            }
             else
             {
                 
                 ViewClaims viewClaims = new ViewClaims();
-                viewClaims.Show();
                 this.Close();
+                viewClaims.Show();
+                
             }
             
         }
-
 
     }
 }

@@ -21,14 +21,18 @@ namespace AppliedSysMotors.App_Code.BLL
 
         }
         //accessors for encapsulation purposes
-        public int getTotalOfClaims()
-        {
-            return this.totalClaims;
-        }
 
-        public void setTotalOfClaims(int newTot)
+        public int TotalOfClaims
         {
-            this.totalClaims = newTot;
+            get
+            {
+                return this.totalClaims;
+            }
+
+            set
+            {
+                this.totalClaims = value;
+            }
         }
 
         public void incrementTotalClaims()
@@ -36,54 +40,78 @@ namespace AppliedSysMotors.App_Code.BLL
             this.totalClaims++;
         }
 
-        public Driver getYoungestDriver()
+        public Driver YoungestDriver
         {
-            return this.youngestDriver;
-        }
-        public String getYoungestDriverName()
-        {
-            return this.youngestDriver.getName();
-        }
+            get
+            {
+                return this.youngestDriver;
+            }
 
-        public int getYoungestDriverAge()
-        {
-            return this.youngestDriver.getAge();
-        }
-
-        public void setYoungestDriver(Driver youngestDriver)
-        {
-            this.youngestDriver = youngestDriver;
+            set
+            {
+                this.youngestDriver = value;
+            }
         }
 
-        public Driver getOldestDriver()
+        public String YoungestDriverName
         {
-            return this.oldestDriver;
+            get
+            {
+                return this.youngestDriver.Name;
+            }
         }
 
-        public String getOldestDriverName()
+        public int YoungestDriverAge
         {
-            return this.oldestDriver.getName();
+            get
+            {
+                return this.youngestDriver.Age;
+            }
         }
 
-        public int getOldestDriverAge()
+        public Driver OldestDriver
         {
-            return this.oldestDriver.getAge();
+            get
+            {
+                return this.oldestDriver;
+            }
+
+            set
+            {
+                this.oldestDriver = value;
+            }
         }
 
-        public void setOldestDriver(Driver oldestDriver)
+        public String OldestDriverName
         {
-            this.oldestDriver = oldestDriver;
+            get
+            {
+                return this.oldestDriver.Name;
+            }
         }
 
-
-        public Driver[] getDriverArray()
+        public int OldestDriverAge
         {
-            return this.policyDrivers;
-        } 
+            get
+            {
+                return this.oldestDriver.Age;
+            }
+        }
 
-        public int getPosition()
+        public Driver[] DriverArray
         {
-            return this.position;
+            get
+            {
+                return this.policyDrivers;
+            }
+        }
+
+        public int Position
+        {
+            get
+            {
+                return this.position;
+            }
         }
 
         public Driver getDriverAt(int index)
@@ -94,7 +122,7 @@ namespace AppliedSysMotors.App_Code.BLL
         public String getDriverName(int index)
         {
             String name;
-            name = policyDrivers[index].getName();
+            name = policyDrivers[index].Name;
             return name;
         }
         //takes the driver parameter and adds it to the driver and ensures you can not go past the array limit
@@ -119,35 +147,7 @@ namespace AppliedSysMotors.App_Code.BLL
         {
             this.policyDate = startDate;
         }
-        
-
-        
-        
-
-        
-
-
-        //public String declined()
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    if (age < 21)
-        //    {
-        //        sb.Append("Age of Youngest Driver " + this.fName + " " + this.lName);
-        //    }
-        //    else if (age > 75)
-        //    {
-        //        sb.Append("Age of Oldest Driver " + this.fName + " " + this.lName);
-        //    }
-        //    else if (this.claims > 2)
-        //    {
-        //        sb.Append("Driver has more than 2 claims " + this.fName + " " + this.lName);
-        //    }
-        //    else if (this.claims > 3)
-        //    {
-        //        sb.Append("Policy has more than 3 claims");
-        //    }
-        //    return sb.ToString();
-        //}
+     
     }
 
 }

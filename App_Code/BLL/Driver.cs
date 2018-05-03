@@ -20,54 +20,90 @@ namespace AppliedSysMotors.App_Code.BLL
 
         public Driver(String fName, String lName, DateTime dob,Boolean occupation, DateTime today)
         {
-            this.fName = fName;
-            this.lName = lName;
+            this.FName = fName;
+            this.LName = lName;
             this.occAccountant = occupation;
             this.dob = dob;
             this.age = today.Year - dob.Year;
         }
         //accessors for encapsulation purposes
-        public Claim[] getClaimArray()
+        public Claim[] ClaimArray
         {
-            return this.driverClaims;
+            get
+            {
+                return this.driverClaims;
+            }
         }
+
         public Claim getClaimAt(int index)
         {
             return driverClaims[index];
         }
-        
-        public int getAge()
+
+
+        public int Age
         {
-            return this.age;
+            get
+            {
+                return this.age;
+            }
+
+            set
+            {
+                this.age = value;
+            }
         }
 
-        public Boolean getOcc()
+        public Boolean Occ
         {
-            return this.occAccountant;
+            get
+            {
+                return this.occAccountant;
+            }
         }
 
-        public void setAge(int age)
+        public String Name
         {
-            this.age = age;
+            get
+            {
+                return this.FName + " " + this.LName;
+            }
         }
 
-        public String getName()
+        public string FName
         {
-            return this.fName + " " + this.lName;
+            get
+            {
+                return fName;
+            }
+
+            set
+            {
+                fName = value;
+            }
         }
 
-        public void setFName(String fname)
+        public string LName
         {
-            this.fName = fname;
-        }
-        public void setLname(String lname)
-        {
-            this.lName = lname;
+            get
+            {
+                return lName;
+            }
+
+            set
+            {
+                lName = value;
+            }
         }
 
-        public int getPosition()
+
+
+        public int Position
         {
-            return this.position;
+            get
+            {
+                return this.position;
+            }
         }
 
         public String addToArray(Claim newClaim)
@@ -89,24 +125,28 @@ namespace AppliedSysMotors.App_Code.BLL
 
         }
 
-        public int getNumOfClaims()
+        public int NumOfClaims
         {
-            //loops the claim array, increments for each value that isn't null and returns the int
-            int numberOfClaims = 0;
-            for (int index = 0; index < driverClaims.Length; index++)
+            get
             {
-                if (driverClaims[index] != null)
+                //loops the claim array, increments for each value that isn't null and returns the int
+                int numberOfClaims = 0;
+                for (int index = 0; index < driverClaims.Length; index++)
                 {
-                    numberOfClaims++;
+                    if (driverClaims[index] != null)
+                    {
+                        numberOfClaims++;
+                    }
                 }
+                return numberOfClaims;
             }
-            return numberOfClaims;
         }
+
         //based on criteria for the occupation, a boolean value was used and premium was increased according to if the driver is an accountant or not  
 
         public void calcDriverOcc()
         {
-            if (getOcc() == true)
+            if (Occ== true)
             {
                 Global.premium = Global.premium * 0.9;
             }
@@ -133,12 +173,12 @@ namespace AppliedSysMotors.App_Code.BLL
 
         public void calcClaimPremium()
         {//loops through claim array and for each value that is not null calculates its age, depending on the age of that claim it adjusts the premium
-            for(int index = 0; index < getClaimArray().Length; index++)
+            for(int index = 0; index < ClaimArray.Length; index++)
             {
                 
                 if (getClaimAt(index) != null)
                 {
-                    int claimAge = Global.startDate.Year - getClaimAt(index).getClaimAge().Year;
+                    int claimAge = Global.startDate.Year - getClaimAt(index).ClaimAge.Year;
                     if (claimAge <= 1)
                     {
                         Global.premium = Global.premium * 1.2;

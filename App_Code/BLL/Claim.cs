@@ -22,29 +22,35 @@ namespace AppliedSysMotors.App_Code.BLL
             
         }
         //accessors for encapsulation purposes
-        public DateTime getClaimAge()
-        {   
-            
-            return this.claimAge;
-        }
-
-        public String getClaimType()
+        public DateTime ClaimAge
         {
-            return this.claimType;
+            get
+            {
+
+                return this.claimAge;
+            }
         }
 
-        
 
-        public String getClaimDate()
+        public String ClaimType
         {
-            return this.claimAge.ToLongDateString();
+            get
+            {
+                return this.claimType;
+            }
+
+            set
+            {
+                this.claimType = value;
+            }
         }
 
-        public void setClaimType(String newType)
+        public String ClaimDate
         {
-            this.claimType = newType;
+            get
+            {
+                return this.claimAge.ToLongDateString();
+            }
         }
-
-        
     }
 }

@@ -15,7 +15,7 @@ namespace AppliedSysMotors.Properties
         public ViewClaims()
         {
             InitializeComponent();
-            for (int index = 0; index < Global.newPolicy.getDriverAt(Global.position).getClaimArray().Length; index++)
+            for (int index = 0; index < Global.newPolicy.getDriverAt(Global.position).ClaimArray.Length; index++)
             {
                 if (Global.newPolicy.getDriverAt(index) != null)
                 {
@@ -24,19 +24,19 @@ namespace AppliedSysMotors.Properties
                     switch (index)
                     {
                         case 0:
-                            lblClaim1Details.Text = Global.newPolicy.getDriverName(0) + " \tClaims: " + Global.newPolicy.getDriverAt(0).getNumOfClaims();
+                            lblClaim1Details.Text = Global.newPolicy.getDriverName(0) + " \tClaims: " + Global.newPolicy.getDriverAt(0).NumOfClaims;
                             break;
                         case 1:
-                            lblClaim2Details.Text = Global.newPolicy.getDriverName(1) + " \tClaims: " + Global.newPolicy.getDriverAt(1).getNumOfClaims();
+                            lblClaim2Details.Text = Global.newPolicy.getDriverName(1) + " \tClaims: " + Global.newPolicy.getDriverAt(1).NumOfClaims;
                             break;
                         case 2:
-                            lblClaim3Details.Text = Global.newPolicy.getDriverName(2) + " \tClaims: " + Global.newPolicy.getDriverAt(2).getNumOfClaims();
+                            lblClaim3Details.Text = Global.newPolicy.getDriverName(2) + " \tClaims: " + Global.newPolicy.getDriverAt(2).NumOfClaims;
                             break;
                         case 3:
-                            lblClaim4Details.Text = Global.newPolicy.getDriverName(3) + " \tClaims: " + Global.newPolicy.getDriverAt(3).getNumOfClaims();
+                            lblClaim4Details.Text = Global.newPolicy.getDriverName(3) + " \tClaims: " + Global.newPolicy.getDriverAt(3).NumOfClaims;
                             break;
                         case 4:
-                            lblClaim5Details.Text = Global.newPolicy.getDriverName(4) + " \tClaims: " + Global.newPolicy.getDriverAt(4).getNumOfClaims();
+                            lblClaim5Details.Text = Global.newPolicy.getDriverName(4) + " \tClaims: " + Global.newPolicy.getDriverAt(4).NumOfClaims;
                             break;
                     }
 

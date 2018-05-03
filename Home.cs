@@ -28,8 +28,7 @@ namespace AppliedSysMotors
                 MessageBox.Show("Please enter a start date for the policy");
             }
             else
-            {
-                
+            {             
                 AddDriver addDriverWind = new AddDriver();
                 addDriverWind.ShowDialog();
             }
@@ -39,8 +38,14 @@ namespace AppliedSysMotors
         private void BtnViewDrivers_Click(object sender, EventArgs e)
         {
             //opens the view driver window
-            Driver_Details viewDriver = new Driver_Details();
-            viewDriver.ShowDialog();
+            if (Global.newPolicy.getDriverAt(0) != null)
+            {
+                Driver_Details viewDriver = new Driver_Details();
+                viewDriver.Show();
+            }
+            else
+                MessageBox.Show("No drivers in policy");
+            
          }
 
         private void btnCalc_Click(object sender, EventArgs e)
@@ -48,91 +53,87 @@ namespace AppliedSysMotors
             /*this button loops through the driver array.
              * for each driver it loops through methods in the driver class to change the premium based on the criteria provided
             */
-            for (int index = 0;index<Global.newPolicy.getDriverArray().Length; index++)
+            try
             {
-                //this if statement ensures it does not call the methods for drivers that don't exist
-                //retrieving the driver in the array at the position of the loop and checking it isn't null it will continue
-                if (Global.newPolicy.getDriverAt(index) != null)
+                for (int index = 0; index < Global.newPolicy.DriverArray.Length; index++)
                 {
+                    //this if statement ensures it does not call the methods for drivers that don't exist
+                    //retrieving the driver in the array at the position of the loop and checking it isn't null it will continue
+                    if (Global.newPolicy.getDriverAt(index) != null)
+                    {
+                        Global.newPolicy.getDriverAt(index).calcDriverOcc();
+                        Global.newPolicy.getDriverAt(index).calcAgePremium(Global.newPolicy.getDriverAt(index).Age);
+                        Global.newPolicy.getDriverAt(index).calcClaimPremium();
+                    }
+                    else
+                    {
+                        //break could have been used as if the driver is null in the array the remaining will too
+                        continue;
+                    }
 
-
-                    Global.newPolicy.getDriverAt(index).calcDriverOcc();
-                    Global.newPolicy.getDriverAt(index).calcAgePremium(Global.newPolicy.getDriverAt(index).getAge());
-                    Global.newPolicy.getDriverAt(index).calcClaimPremium();
-
-
-                    //for (int cIndex = 0; cIndex < Global.newPolicy.getDriverAt(index).getClaimArray().Length; cIndex++)
-                    //{
-                    //    if (Global.newPolicy.getDriverAt(index).getClaimAt(cIndex) != null)
-                    //    {
-                    //        Global.newPolicy.getDriverAt(index).calcClaimPremium(Global.newPolicy.getDriverAt(index).getClaimAt(cIndex).getClaimAge());
-                    //    }
-                    //}
                 }
-                else
+                //output is used for a switch statement, so it was initialised to 0 to prevent the switch from triggering
+                int output = 0;
+                //because the driverIndex is used for a position in array later it was initialised to -1 as array start at 0
+                int driverIndex = -1;
+                //This for loop goes through all the drivers in array and check to see if they trigger the decline criteria
+                for (int index = 0; index < Global.newPolicy.DriverArray.Length; index++)
                 {
-                    //break could have been used as if the driver is null in the array the remaining will too
-                    continue;
+                    if (Global.newPolicy.YoungestDriverAge < 21)
+                    {
+                        output = 1;
+                        break;
+                    }
+                    else if (Global.newPolicy.OldestDriverAge > 75)
+                    {
+                        output = 2;
+                        break;
+                    }
+                    else if (Global.newPolicy.TotalOfClaims > 3)
+                    {
+                        output = 3;
+                        break;
+                    }
+                    else if (Global.newPolicy.getDriverAt(index).NumOfClaims > 2)
+                    {
+                        driverIndex = index;
+                        output = 4;
+                        break;
+                    }
+                    else
+                    {
+                        output = 5;
+                        break;
+                    }
+                }
+                //switch statement based on the results from the loop above, if it passes all the criteria, it will output the premium
+                switch (output)
+                {
+                    case 1:
+                        MessageBox.Show("DECLINED\nAge of Youngest Driver, " + Global.newPolicy.YoungestDriverName);
+                        break;
+                    case 2:
+                        MessageBox.Show("DECLINED\nAge of Oldest Driver, " + Global.newPolicy.OldestDriverName);
+                        break;
+                    case 3:
+                        MessageBox.Show("DECLINED\nPolicy exceeds more than 3 claims");
+                        break;
+                    case 4:
+                        MessageBox.Show("DECLINED\nDriver has more than 2 claims, " + Global.newPolicy.getDriverAt(driverIndex).Name);
+                        break;
+                    case 5:
+                        MessageBox.Show("ACCEPTED\nYou premium total is £" + Global.premium.ToString("F"));
+                        break;
                 }
 
             }
-            //output is used for a switch statement, so it was initialised to 0 to prevent the switch from triggering
-            int output = 0;
-            //because the driverIndex is used for a position in array later it was initialised to -1 as array start at 0
-            int driverIndex = -1;
-            //This for loop goes through all the drivers in array and check to see if they trigger the decline criteria
-            for (int index = 0; index < Global.newPolicy.getDriverArray().Length; index++)
+            catch (Exception)
             {
-                if (Global.newPolicy.getYoungestDriverAge() < 21)
-                {
-                    output = 1;
-                    break;
-                }
-                else if (Global.newPolicy.getOldestDriverAge() > 75)
-                {
-                    output = 2;
-                    break;
-                }
-                else if (Global.newPolicy.getTotalOfClaims() > 3)
-                {
-                    output = 3;
-                    break;
-                }
-                else if (Global.newPolicy.getDriverAt(index).getNumOfClaims() > 2)
-                {
-                    driverIndex = index;
-                    output = 4;
-                    break;
-                }
-                else
-                {
-                    output = 5;
-                    break;
-                }
+
+                MessageBox.Show("Please enter a driver before calculating premium");
             }
-            //switch statement based on the results from the loop above, if it passes all the criteria, it will output the premium
-            switch (output)
-            {
-                case 1:
-                    MessageBox.Show("Age of Youngest Driver, " + Global.newPolicy.getYoungestDriverName());
-                    break;
-                case 2:
-                    MessageBox.Show("Age of Oldest Driver, " + Global.newPolicy.getOldestDriverName());
-                    break;
-                case 3:
-                    MessageBox.Show("Policy exceeds more than 3 claims");
-                    break;
-                case 4:
-                    MessageBox.Show("Driver has more than 2 claims, " + Global.newPolicy.getDriverAt(driverIndex).getName());
-                    break;
-                case 5:
-                    MessageBox.Show("You premium total is £"+Global.premium.ToString("F"));
-                    break;
-            }
-            
             
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             //Global.newPolicy.setPolicyDate(Convert.ToDateTime(dtpStartDate.ToString()));

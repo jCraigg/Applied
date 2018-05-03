@@ -23,14 +23,14 @@ namespace AppliedSysMotors
         private void btnAddClaim_Click(object sender, EventArgs e)
         {
             //Will check if the array is full before attempting to add one
-            if(Global.newPolicy.getDriverAt(Global.position).getPosition() == 5)
+            if(Global.newPolicy.getDriverAt(Global.position).Position== 5)
             {
                 MessageBox.Show("This driver has reached its claim capacity");
             }
             else
             {
                 //the data from the user input is passed through to the claim constructor
-                if (Global.newPolicy.getDriverAt(Global.position).getClaimAt(Global.newPolicy.getDriverAt(Global.position).getPosition()) == null)
+                if (Global.newPolicy.getDriverAt(Global.position).getClaimAt(Global.newPolicy.getDriverAt(Global.position).Position) == null)
                 {   //ensures all data is entered before creating a claim object
                     if (ddlClaimType != null && dtpClaimDate.Value <= dtpClaimDate.Value.ToLocalTime())
                     {
@@ -38,7 +38,6 @@ namespace AppliedSysMotors
                         Global.newPolicy.getDriverAt(Global.position).addToArray(newClaim);
                         Global.newPolicy.incrementTotalClaims();
                         lblOutput.Text = "Claim added";
-                        
                     }
                     else
                     {
@@ -46,9 +45,6 @@ namespace AppliedSysMotors
                     }
                 }
             }
-
-
-            
         }
 
         private void AddClaims_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,8 +53,6 @@ namespace AppliedSysMotors
 
             Driver_Details driverDetails = new Driver_Details();
             driverDetails.Show();
-
-
         }
 
         private void ddlClaimType_SelectedIndexChanged(object sender, EventArgs e)

@@ -24,7 +24,7 @@ namespace AppliedSysMotors
         private void btnAddDriver_Click(object sender, EventArgs e)
         {
             //prevents the user to add drivers if the array is full
-            if (Global.newPolicy.getPosition() == 5)
+            if (Global.newPolicy.Position== 5)
             {
                 MessageBox.Show("Policy has reached driver limit");
             }
@@ -32,32 +32,31 @@ namespace AppliedSysMotors
             {   //ensures the user has entered all details for the driver before creating one
                 if ((txtForename.Text == String.Empty || txtSurname.Text == String.Empty)||(chkAccountant.Checked==false && chkChauffeur.Checked==false))
                 {
-
                     MessageBox.Show("Please enter all details");
                 }
                 else
                 {   //if the driver array is null the values are passed through to the constructor in the driver class and is created
-                    if (Global.newPolicy.getDriverAt(Global.newPolicy.getPosition()) == null)
+                    if (Global.newPolicy.getDriverAt(Global.newPolicy.Position) == null)
                     {
                         App_Code.BLL.Driver newDriver = new App_Code.BLL.Driver(txtForename.Text, txtSurname.Text,
                                                 Convert.ToDateTime(dtpBirthdate.Text), occAccountant, DateTime.Today);
                         //when a driver is created it is compared to various variables which will apply when calculating premium
                         Global.newPolicy.addToArray(newDriver);
-                        if (Global.newPolicy.getYoungestDriver() ==null)
+                        if (Global.newPolicy.YoungestDriver==null)
                         {
-                            Global.newPolicy.setYoungestDriver(newDriver);
+                            Global.newPolicy.YoungestDriver = newDriver;
                         }
-                        else if(newDriver.getAge() < Global.newPolicy.getYoungestDriverAge())
+                        else if(newDriver.Age< Global.newPolicy.YoungestDriverAge)
                         {
-                            Global.newPolicy.setYoungestDriver(newDriver);
+                            Global.newPolicy.YoungestDriver = newDriver;
                         }
-                        if (Global.newPolicy.getOldestDriver() == null)
+                        if (Global.newPolicy.OldestDriver== null)
                         {
-                            Global.newPolicy.setOldestDriver(newDriver);
+                            Global.newPolicy.OldestDriver = newDriver;
                         }
-                        else if (newDriver.getAge() > Global.newPolicy.getOldestDriverAge())
+                        else if (newDriver.Age> Global.newPolicy.OldestDriverAge)
                         {
-                            Global.newPolicy.setOldestDriver(newDriver);
+                            Global.newPolicy.OldestDriver = newDriver;
                         }
                         lblOutput.Text = "Driver added ";
                         txtForename.Text = "";
@@ -67,21 +66,21 @@ namespace AppliedSysMotors
                     {
                         lblOutput.Text = "Policy has too many Drivers";
                     }
-                }
-                
+                }                
             }
-            
-            
-                
-            
-            
         }
 
         private void btnViewDrivers_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Driver_Details newD = new Driver_Details();
-            newD.ShowDialog();
+            if (Global.newPolicy.getDriverAt(0) != null)
+            {
+                this.Close();
+                Driver_Details newD = new Driver_Details();
+                newD.Show();
+            }
+            else
+                MessageBox.Show("No drivers in policy");
+            
             
         }
 

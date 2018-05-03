@@ -45,3 +45,14 @@ G:\Josh Craig Program FINAL\AppliedSysMotors\AppliedSysMotors\obj\Debug\AppliedS
 C:\Users\jcraig\git\applied\AppliedSysMotors\bin\Debug\AppliedSysMotors.exe.config
 C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.exe
 C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.pdb
+C:\Users\jcraig\git\applied\AppliedSysMotors\bin\Debug\AppliedSysMotors.exe
+C:\Users\jcraig\git\applied\AppliedSysMotors\bin\Debug\AppliedSysMotors.pdb
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.csprojResolveAssemblyReference.cache
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.AddClaims.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.Driver_Details.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.AddDriver.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.Home.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.Properties.Resources.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.Properties.ViewClaims.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.ViewClaims.resources
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.csproj.GenerateResource.Cache

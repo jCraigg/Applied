@@ -22,7 +22,7 @@ namespace AppliedSysMotors
             lblClaimtype4Details.Text = "";
             lblClaimType5Details.Text = "";
             //populating the labels by looping through the previously choosen driver's claim array
-            for (int index = 0; index < Global.newPolicy.getDriverAt(Global.position).getClaimArray().Length; index++)
+            for (int index = 0; index < Global.newPolicy.getDriverAt(Global.position).ClaimArray.Length; index++)
             {
                 //if the value of the claim array is not null it will continue to set the details for the label
                 if (Global.newPolicy.getDriverAt(Global.position).getClaimAt(index) != null)
@@ -33,29 +33,26 @@ namespace AppliedSysMotors
                     {
                         //for each label it will retrieve the drivers claim type and date using the global position to retrieve the correct driver
                         case 0:
-                            lblClaimType1Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(0).getClaimType();
-                            lblClaimDate1.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(0).getClaimDate();
+                            lblClaimType1Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(0).ClaimType;
+                            lblClaimDate1.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(0).ClaimDate;
                             break;
                         case 1:
-                            lblClaimType2Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(1).getClaimType();
-                            lblClaimDate2.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(1).getClaimDate();
+                            lblClaimType2Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(1).ClaimType;
+                            lblClaimDate2.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(1).ClaimDate;
                             break;
                         case 2:
-                            lblClaimType3Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(2).getClaimType();
-                            lblClaimDate3.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(2).getClaimDate();
+                            lblClaimType3Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(2).ClaimType;
+                            lblClaimDate3.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(2).ClaimDate;
                             break;
                         case 3:
-                            lblClaimtype4Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(3).getClaimType();
-                            lblClaimDate4.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(3).getClaimDate();
+                            lblClaimtype4Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(3).ClaimType;
+                            lblClaimDate4.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(3).ClaimDate;
                             break;
                         case 4:
-                            lblClaimType5Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(4).getClaimType();
-                            lblClaimDate5.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(4).getClaimDate();
+                            lblClaimType5Details.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(4).ClaimType;
+                            lblClaimDate5.Text = Global.newPolicy.getDriverAt(Global.position).getClaimAt(4).ClaimDate;
                             break;
                     }
-
-
-
                 }
 
             }
