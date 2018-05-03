@@ -42,3 +42,6 @@ G:\Josh Craig Program FINAL\AppliedSysMotors\AppliedSysMotors\obj\Debug\AppliedS
 G:\Josh Craig Program FINAL\AppliedSysMotors\AppliedSysMotors\obj\Debug\AppliedSysMotors.csproj.CoreCompileInputs.cache
 G:\Josh Craig Program FINAL\AppliedSysMotors\AppliedSysMotors\obj\Debug\AppliedSysMotors.exe
 G:\Josh Craig Program FINAL\AppliedSysMotors\AppliedSysMotors\obj\Debug\AppliedSysMotors.pdb
+C:\Users\jcraig\git\applied\AppliedSysMotors\bin\Debug\AppliedSysMotors.exe.config
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.exe
+C:\Users\jcraig\git\applied\AppliedSysMotors\obj\Debug\AppliedSysMotors.pdb
